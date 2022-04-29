@@ -9,17 +9,18 @@
 .happy-survey-wrapper {
   font-family: "Nunito", sans-serif;
   width: 100%;
+ 
 }
 
 .hs-embeded-survey {
   font-family: "Nunito", sans-serif;
   margin: 0 auto;
   width: 750px;
-  height: 400px;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(22, 38, 57);
+  background-color: white;
 }
 
 .hs-question-h3 {
@@ -46,6 +47,7 @@
   margin-top: 0;
   cursor: pointer;
   border: none;
+  color: white;
 }
 
 .hs-emb-bt:hover {
@@ -57,10 +59,12 @@
   filter: brightness(150%);
   font-weight: bolder;
   font-size: 20px;
+  color: white;
 }
 
 .hs-emb-bt0 {
   background-color: rgb(242, 74, 74);
+  
 }
 
 .hs-emb-bt1 {
@@ -136,9 +140,20 @@
   font-size: 20px;
   cursor: pointer;
   border: none;
+  color:white;
 }
 
 .hs-emb-save:hover {
   background-color: #ff5c02;
+  
+}
+
+.hs-closebutton-div {
+  background-color: blueviolet;
+  display: block;
+  float: right;
+  height: 40px;
+  width: 40px;
   color: white;
+  z-index: 100;
 }
