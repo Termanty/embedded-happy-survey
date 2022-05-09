@@ -2,19 +2,22 @@
 <htlm lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Document</title>
+    <title>Embedded survey</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
-<!--     <h1>Hello World</h1> -->
-    <div class="happy-survey-wrapper" npsPropertyId="21">
+    <div class="happy-survey-wrapper">
       <div id="hs-embeded-survey" class="hs-embeded-survey"></div>
-     <!--  <script
+
+      <!-- This loads he-emb.js file from Amazon s3. -->
+      <!--  <script
         type="text/javascript"
         src="https://happy-survey-embed.s3.eu-north-1.amazonaws.com/hs-emb.js"
         id="happy-survey-script"
         surveyId="b1e5ff6a-6337-4616-b8e0-a9a6e388c6f6"
       ></script> -->
+
+      <!-- This loads local he-emb.js file from the local machine. -->
       <script
         type="text/javascript"
         src="./hs-emb.js"
