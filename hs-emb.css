@@ -6,13 +6,44 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #B6C8DD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .happy-survey-wrapper {
-  font-family: "Nunito", sans-serif;
-  width: 100%;
- 
+  height: 100vh;
+  background-color: #B6C8DD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .hs-embeded-survey {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 50px auto;
+  font-family: "Nunito",
+    sans-serif;
+  text-align: center;
+  justify-self: center;
+  width: 900px;
+  height: 600px;
+  padding: 0px;
+  background-color: rgb(22, 38, 57);
+  border-radius: 5px;
+}
+
+/* .hs-embeded-survey {
   font-family: "Nunito", sans-serif;
   margin: 0 auto;
   width: 750px;
@@ -21,7 +52,7 @@
   flex-direction: column;
   align-items: center;
   background-color: white;
-}
+} */
 
 .hs-question-h3 {
   color: white;
@@ -31,7 +62,7 @@
 .likely {
   font-size: smaller;
   color: white;
-  margin-bottom: 20px;
+  margin: 20px;
 }
 .progress {
   display: inline-flex;
@@ -42,8 +73,8 @@
 
 .hs-emb-bt {
   margin: 4px;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   margin-top: 0;
   cursor: pointer;
   border: none;
@@ -52,19 +83,20 @@
 
 .hs-emb-bt:hover {
   filter: brightness(150%);
+  color: #162639;
 }
 
+
 .hs-emb-bt-selected {
-  border: 5px solid white;
+  border: 1.5px solid white;
   filter: brightness(150%);
-  font-weight: bolder;
-  font-size: 20px;
-  color: white;
+  font-weight: normal;
+  color: #070e16;
+  box-shadow: 0px 0px 2px 0px white;
 }
 
 .hs-emb-bt0 {
   background-color: rgb(242, 74, 74);
-  
 }
 
 .hs-emb-bt1 {
@@ -80,31 +112,36 @@
 }
 
 .hs-emb-bt4 {
-  background-color: rgb(218, 131, 68);
+  background-color: #DA8344;
 }
 
 .hs-emb-bt5 {
-  background-color: rgb(220, 159, 68);
+  background-color: #DC9F44;
 }
 
 .hs-emb-bt6 {
-  background-color: rgb(218, 188, 111);
+  background-color: #DABC6F;
 }
 
 .hs-emb-bt7 {
   background-color: rgb(183, 193, 122);
+
 }
 
 .hs-emb-bt8 {
   background-color: rgb(159, 203, 103);
+
 }
 
 .hs-emb-bt9 {
-  background-color: rgb(82, 165, 105);
+  background-color: #52A569;
 }
 
 .hs-emb-bt10 {
-  background-color: rgb(59, 133, 84);
+  background-color: #3B8554;
+}
+.hsInfoText {
+  color: white;
 }
 
 .hs-info-p {
@@ -118,12 +155,13 @@
   color: black;
   font-weight: bold;
   width: 500px;
-  height: 100px;
+  height: 120px;
   padding: 16px;
   text-align: left;
   margin-top: 10px;
   border-radius: 5px;
   resize: none;
+  border: solid 1px white;
 }
 
 .hs-comment:focus {
@@ -133,27 +171,218 @@
 .hs-emb-save {
   background-color: #ce672e;
   width: 100px;
-  height: 40px;
+  height: 50px;
   border-radius: 5px;
   margin: 20px;
   font-family: sans-serif;
   font-size: 20px;
   cursor: pointer;
   border: none;
-  color:white;
+  color: white;
+  margin: 50px 0 70px 0;
 }
 
 .hs-emb-save:hover {
   background-color: #ff5c02;
-  
+  color: white;
 }
 
 .hs-closebutton-div {
-  background-color: blueviolet;
   display: block;
-  float: right;
-  height: 40px;
-  width: 40px;
   color: white;
-  z-index: 100;
+  font-size: 16px;
+  margin-left: 90%;
+}
+
+
+
+.hs-close-button {
+  font-size: 15px;
+  text-align: center;
+  margin-top: 8px;
+  margin-left: 93%;
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+  border-radius: 5px;
+  background-color: #071729e9;
+  border-radius: 50%;
+  border: solid 1px #ff5b029f;
+  color: #FF5C02;
+}
+
+.hs-close-button:hover {
+  background-color: #FF5C02;
+  color: #162639;
+}
+
+.responsive-section {
+  display: none;
+}
+
+/***************mobile*****************/
+
+@media only screen and (max-width: 428px) {
+  .hs-embeded-survey {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 926px;
+  }
+
+
+  .hs-question-h3 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    display: inline-block;
+  }
+
+  .likely {
+    font-size: 1rem;
+
+  }
+
+  .hs-emb-save {
+    width: 70px;
+    height: 40px;
+    font-size: 15px;
+    color: white;
+    margin: 20px 0 30px 0;
+  }
+
+  .hs-close-button {
+    display: none;
+  }
+
+  .progress {
+    display: none;
+  }
+
+  .responsive-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 50px auto;
+    margin-top: 40px;
+    width: 100%;
+    clear: both;
+    margin-bottom: 50px;
+  }
+
+  .circle {
+    font-size: large;
+    color: #FF5C02;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 1px solid gainsboro;
+    background-color: #B6C8DD;
+  }
+
+  .circle {
+    font-size: 60px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .rating {
+    width: 300px;
+    height: 23px;
+    border: 1px solid gainsboro;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+  }
+
+  #rating {
+    display: block;
+    margin: 10px auto 0 auto;
+  }
+
+  .hs-comment {
+    width: 300px;
+    align-self: center;
+    border: solid 1.5px #b6c8dd;
+    background-color: #162639;
+    border-radius: 13px;
+    color: white;
+    padding: 8px;
+  }
+
+  .hs-info-p {
+    text-align: center;
+    padding-top: 0;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 20px;
+  }
+}
+
+/***************ipad*****************/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+
+
+  .hs-embeded-survey {
+    margin: 50px auto;
+    font-family: "Nunito",
+      sans-serif;
+    width: 90%;
+    height: auto;
+    padding: 0px;
+  }
+
+  .hs-question-h3 {
+    color: white;
+    margin: 30px;
+    font-size: 16px;
+  }
+
+  .hs-emb-save {
+    width: 70px;
+    height: 40px;
+    font-size: 15px;
+    color: white;
+    margin: 30px 0 50px 0;
+  }
+
+  .hs-emb-bt {
+    margin: 3px;
+    height: 30px;
+    width: 30px;
+    margin-top: 0;
+    cursor: pointer;
+    border: none;
+    color: white;
+  }
+
+  .likely {
+    margin: 10px;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .hs-comment {
+    width: 300px;
+    align-self: center;
+    border: solid 1.5px #b6c8dd;
+    background-color: #162639;
+    border-radius: 13px;
+    color: white;
+    padding: 8px;
+  }
+
+  .hs-info-p {
+    text-align: center;
+    padding-top: 0;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 20px;
+  }
 }
