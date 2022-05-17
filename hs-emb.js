@@ -50,16 +50,14 @@ function createHS() {
     "responsive-section"
   );
   const circle = addElement(responsiveInput, "input", undefined, "circle");
-  circle.setAttribute("id", "ratingValue");
+  circle.setAttribute("id", "circle");
   circle.setAttribute("type", "text");
   circle.setAttribute("value", "");
   circle.setAttribute("max", 10);
   circle.addEventListener("change", handleInputchange);
+
   const rating = addElement(responsiveInput, "div", "", "rating");
   rating.setAttribute("id", "rating");
-  rating.setAttribute("value", ".1");
-  rating.setAttribute("max", "1");
-  rating.position = ratingValue;
   rating.style.backgroundColor = "gray";
   rating.addEventListener("click", handleRatingClick);
   //It ends here
@@ -98,77 +96,46 @@ function handleCloseClick() {
 
 //responsive page on input change
 function handleInputchange(e) {
-  const inputValue = e.target.value;
-  if (inputValue < 0 || inputValue > 10) {
-    alert("Rating can be 0-10!");
+  const input = Number(e.target.value);
+
+  if (isNaN(input) || input < 0 || input > 10) {
     e.target.value = "";
     e.target.focus();
   } else {
-    swithHandle(inputValue);
+    updateRatingBar(input);
   }
 }
 
 //responsive page on rating (div bar) click
 function handleRatingClick(e) {
   const x = e.pageX - this.offsetLeft;
-  const xconvert = x / 300;
-  var finalx = xconvert.toFixed(1);
-  rating.value = finalx;
-  ratingValue.value = finalx * 10;
-  let ratingScore = ratingValue.value;
-  swithHandle(ratingScore);
+  const score = Math.round(x / 30);
+  circle.value = score;
+  updateRatingBar(score);
 }
 
-function swithHandle(value) {
-  switch (value) {
-    case "0":
-      rating.style.backgroundImage =
-        "linear-gradient(to right, rgba(0,0,0,0) 0%, gray 20%)";
-      break;
-    case "1":
-      rating.style.backgroundImage =
-        "linear-gradient(to right, rgb(226, 96, 96) 10%, gray 20%)";
-      break;
-    case "2":
-      rating.style.backgroundImage =
-        "linear-gradient(to right, rgb(226, 96, 96) 10%,rgb(220, 95, 68) 20%, gray 20%";
-      break;
-    case "3":
-      rating.style.backgroundImage =
-        "linear-gradient(to right, rgb(226, 96, 96) 10%, rgb(220, 95, 68) 10%, rgb(220, 95, 68) 30%, gray 20%";
-      break;
-    case "4":
-      rating.style.backgroundImage =
-        "linear-gradient(to right, rgb(226, 96, 96) 10%, rgb(220, 95, 68) 20%, rgb(220, 95, 68) 30%,rgb(226, 96, 96) 40%, gray 20%";
-      break;
-    case "5":
-      rating.style.backgroundImage =
-        "linear-gradient(to right, rgb(226, 96, 96) 10%, rgb(220, 95, 68) 20%, rgb(220, 95, 68) 30%,rgb(226, 96, 96) 40%, rgb(220, 159, 68) 50%, gray 50%";
-      break;
-    case "6":
-      rating.style.backgroundImage =
-        "linear-gradient(to right, rgb(226, 96, 96) 9%, rgb(220, 95, 68) 9%, rgb(220, 95, 68) 12%,rgb(226, 96, 96) 10%, rgb(220, 159, 68) 50%, rgb(218, 188, 111) 60%, gray 20%";
-      break;
-    case "7":
-      rating.style.backgroundImage =
-        "linear-gradient(to right, rgb(226, 96, 96) 9%, rgb(220, 95, 68) 9%, rgb(220, 95, 68) 12%,rgb(226, 96, 96) 10%, rgb(220, 159, 68) 50%, rgb(218, 188, 111) 60%, rgb(183, 193, 122) 70%, gray 20%";
-      break;
-    case "8":
-      rating.style.backgroundImage =
-        "linear-gradient(to right, rgb(226, 96, 96) 9%, rgb(220, 95, 68) 9%, rgb(220, 95, 68) 12%,rgb(226, 96, 96) 10%, rgb(220, 159, 68) 50%, rgb(218, 188, 111) 60%, rgb(183, 193, 122) 70%, rgb(159, 203, 103) 80%, gray 20%";
-      break;
-    case "9":
-      rating.style.backgroundImage =
-        "linear-gradient(to right, rgb(226, 96, 96) 9%, rgb(220, 95, 68) 9%, rgb(220, 95, 68) 12%,rgb(226, 96, 96) 10%, rgb(220, 159, 68) 50%, rgb(218, 188, 111) 60%, rgb(183, 193, 122) 70%, rgb(159, 203, 103) 80%, rgb(82, 165, 105) 90%, gray 20%";
-      break;
-    case "10":
-      rating.style.backgroundImage =
-        "linear-gradient(to right, rgb(226, 96, 96) 9%, rgb(220, 95, 68) 9%, rgb(220, 95, 68) 12%,rgb(226, 96, 96) 10%, rgb(220, 159, 68) 50%, rgb(218, 188, 111) 60%, rgb(183, 193, 122) 70%, rgb(159, 203, 103) 80%, rgb(82, 165, 105) 90%,rgb(59, 133, 84) 100%, gray 20%";
-      break;
-    default:
-      rating.style.backgroundColor = "gray";
-      break;
-  }
+function updateRatingBar(score) {
+  const colorBar = selectColors(score);
+  const grayArea = `gray ${score * 10}%`;
+  const progressBar = `linear-gradient(to right, ${colorBar}, ${grayArea})`;
+  rating.style.backgroundImage = progressBar;
+}
+
+function selectColors(score) {
+  const colors = [
+    "rgb(226, 96, 96) 0%",
+    "rgb(226, 96, 96) 10%",
+    "rgb(226, 96, 96) 20%",
+    "rgb(226, 96, 96) 30%",
+    "rgb(226, 96, 96) 40%",
+    "rgb(226, 96, 96) 50%",
+    "rgb(218,188,111) 60%",
+    "rgb(183,193,122) 70%",
+    "rgb(159,203,103) 80%",
+    "rgb(82,165,105) 90%",
+    "rgb(59,133,84) 100%",
+  ];
+  return `${colors.slice(0, score + 1).join(", ")}`;
 }
 
 function handleSaveClick(event) {
