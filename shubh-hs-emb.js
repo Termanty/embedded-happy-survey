@@ -2,10 +2,7 @@
 
 const hsRootElement = document.getElementById("hs-embeded-survey");
 
-console.log("---  HAPPY Survey  ---");
-
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("content loaded");
 
   const cssUri =
     "https://happy-survey-embed.s3.eu-north-1.amazonaws.com/hs-emb.css";
@@ -52,7 +49,7 @@ function createHS() {
   rating.setAttribute("max", "1");
   rating.position= ratingValue;
   rating.style.backgroundColor="gray";
-  rating.addEventListener("click", handleRatingClick);
+  rating.addEventListener("click", ratingClickHandle);
   //It ends here
 
   const commentInfo =
@@ -96,22 +93,22 @@ function handleButtonClick(event) {
     e.target.focus();
   }
   else {
-    swithHandle(inputValue);
+    switchColorHandle(inputValue);
   }
  }
 
  //responsive page on rating (div bar) click
-function handleRatingClick(e) {
+function ratingClickHandle(e) {
   const x = e.pageX - this.offsetLeft;
-  const xconvert = x/300;
-  var finalx = (xconvert).toFixed(1);
-  rating.value = finalx;
-  ratingValue.value = finalx*10;
+  const xConvert = x/300;
+  var finalX = (xConvert).toFixed(1);
+  rating.value = finalX;
+  ratingValue.value = finalX*10;
   let ratingScore = ratingValue.value;
-  swithHandle(ratingScore);
+  switchColorHandle(ratingScore);
 }
 
-function swithHandle(value) {
+function switchColorHandle(value) {
   switch (value){
     case "0" :rating.style.backgroundImage= "linear-gradient(to right, rgba(0,0,0,0) 0%, gray 20%)";
     break;
@@ -153,9 +150,7 @@ function handleSaveClick(event) {
   // const url = "http://localhost:3001/responses";
   const hsElem = document.getElementById("happy-survey-script");
 
-  console.log(hsElem);
   const surveyId = hsElem.getAttribute("surveyid");
-  console.log(surveyId);
 
   fetch(url, {
     method: "POST",
