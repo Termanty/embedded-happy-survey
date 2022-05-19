@@ -140,8 +140,13 @@ function selectColors(score) {
 
 function handleSaveClick(event) {
   const btElem = document.getElementsByClassName("hs-emb-bt-selected")[0];
-  if (!btElem) return; // TODO: what to do when no selection is made?
-  const score = btElem.innerHTML;
+  const scoreInCircle = document.getElementById("circle");
+  if (!btElem && scoreInCircle.value === "") return; // TODO: what to do when no selection is made?
+
+  let score = scoreInCircle.value;
+  if (score === "") {
+    score = btElem.innerHTML;
+  }
   const comment = document.getElementById("hs-comment-text").value;
   console.log(score);
   console.log(comment);
