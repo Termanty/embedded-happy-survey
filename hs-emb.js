@@ -101,6 +101,7 @@ function handleInputchange(e) {
   if (isNaN(input) || input < 0 || input > 10) {
     e.target.value = "";
     e.target.focus();
+    updateRatingBar(0);
   } else {
     updateRatingBar(input);
   }
