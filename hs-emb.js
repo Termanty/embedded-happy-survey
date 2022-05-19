@@ -54,7 +54,7 @@ function createHS() {
   circle.setAttribute("type", "text");
   circle.setAttribute("value", "");
   circle.setAttribute("max", 10);
-  circle.addEventListener("change", handleInputchange);
+  circle.addEventListener("change", handleInputChange);
 
   const rating = addElement(responsiveInput, "div", "", "rating");
   rating.setAttribute("id", "rating");
@@ -95,7 +95,7 @@ function handleCloseClick() {
 }
 
 //responsive page on input change
-function handleInputchange(e) {
+function handleInputChange(e) {
   const input = Number(e.target.value);
 
   if (isNaN(input) || input < 0 || input > 10) {
