@@ -1,11 +1,7 @@
 // hs = HAPPY survey (this is nps survey)
-
 const hsRootElement = document.getElementById('hs-embeded-survey');
 
-/* console.log("---  HAPPY Survey  ---"); */
-
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('content loaded');
 
   /*  const cssUri =
     "https://happy-survey-embed.s3.eu-north-1.amazonaws.com/hs-emb.css"; */
@@ -70,7 +66,7 @@ function createHS() {
   commentElem.setAttribute('id', 'hs-comment-text');
 
   const saveButton = addElement(hsRootElement, 'button', 'Save', 'hs-emb-save');
-  saveButton.addEventListener('click', handleSaveClick);
+  saveButton.addEventListener('click', handleSaveClick); 
 }
 
 function addElement(parent, childType, childText, childClass) {
@@ -149,17 +145,13 @@ function handleSaveClick(event) {
     score = btElem.innerHTML;
   }
   const comment = document.getElementById('hs-comment-text').value;
-  console.log(score);
-  console.log(comment);
 
   const url =
     'http://ec2-13-53-206-94.eu-north-1.compute.amazonaws.com/responses';
   // const url = "http://localhost:3001/responses";
   const hsElem = document.getElementById('happy-survey-script');
 
-  console.log(hsElem);
   const surveyId = hsElem.getAttribute('surveyid');
-  console.log(surveyId);
 
   fetch(url, {
     method: 'POST',
@@ -174,6 +166,8 @@ function handleSaveClick(event) {
   })
     .then((response) => {
       console.log(response);
+      alert("Thank you for your feedback!");
+      window.close();
     })
     .catch((error) => {
       console.log(error);
